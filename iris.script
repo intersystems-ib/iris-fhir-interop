@@ -1,0 +1,9 @@
+    // unexpire passwords for dev mode
+    zn "%SYS"
+    do ##class(Security.Users).UnExpireUserPasswords("*")
+    do $system.License.Upgrade()
+
+    // ssl: load default SSL config
+    write ##class(Security.SSLConfigs).Import("/opt/irisapp/install/ssl.xml")
+
+    halt

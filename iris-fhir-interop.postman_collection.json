@@ -1,0 +1,52 @@
+{
+	"info": {
+		"_postman_id": "7a572507-2067-4ce6-b3e1-03b8a3f2ecf7",
+		"name": "iris-fhir-interop",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8116712"
+	},
+	"item": [
+		{
+			"name": "metadata",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:52773/myendpoint/r4/metadata",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "52773",
+					"path": [
+						"myendpoint",
+						"r4",
+						"metadata"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patient",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:52773/myendpoint/r4/Patient",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "52773",
+					"path": [
+						"myendpoint",
+						"r4",
+						"Patient"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

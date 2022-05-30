@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SSLConfigsExport>
+  <SSLConfigs>
+    <CipherList>ALL:!aNULL:!eNULL:!EXP:!SSLv2</CipherList>
+    <Ciphersuites>TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256</Ciphersuites>
+    <Enabled>true</Enabled>
+    <Name>ssl</Name>
+    <OCSP>0</OCSP>
+    <OCSPRequestFailures>0</OCSPRequestFailures>
+    <OCSPTimeout>2</OCSPTimeout>
+    <PrivateKeyType>2</PrivateKeyType>
+    <TLSMaxVersion>32</TLSMaxVersion>
+    <TLSMinVersion>16</TLSMinVersion>
+    <Type>false</Type>
+    <VerifyDepth>9</VerifyDepth>
+    <VerifyPeer>0</VerifyPeer>
+    <Version>1</Version>
+  </SSLConfigs>
+</SSLConfigsExport>

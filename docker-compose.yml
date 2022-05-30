@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  iris:
+    init: true
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: iris-fhir-interop:latest
+    container_name: iris
+    #command: 
+    #  --key /app/iris.key
+    ports:
+    - "52773:52773"
+    - "1972:1972"
+    volumes:
+    - .:/app
