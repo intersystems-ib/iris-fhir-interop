@@ -11,8 +11,12 @@ XData ProductionDefinition
     <Setting Target="Adapter" Name="FileSpec">*.json</Setting>
     <Setting Target="Host" Name="TargetConfigNames">interop.bp.FileToFHIRServer</Setting>
   </Item>
-  <Item Name="HS.FHIRServer.Interop.HTTPOperation" Category="" ClassName="HS.FHIRServer.Interop.HTTPOperation" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
-    <Setting Target="Host" Name="ServiceName">external-fhirserver</Setting>
+  <Item Name="FHIRServer Operation" Category="" ClassName="HS.FHIRServer.Interop.HTTPOperation" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
+    <Setting Target="Host" Name="ServiceName">external-fhirserver-basic</Setting>
+    <Setting Target="Host" Name="TraceOperations">*FULL*</Setting>
+  </Item>
+  <Item Name="FHIRServer Operation OAuth" Category="" ClassName="HS.FHIRServer.Interop.HTTPOperation" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
+    <Setting Target="Host" Name="ServiceName">external-fhirserver-oauth</Setting>
     <Setting Target="Host" Name="TraceOperations">*FULL*</Setting>
   </Item>
   <Item Name="HS.Util.Trace.Operations" Category="" ClassName="HS.Util.Trace.Operations" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
@@ -22,7 +26,7 @@ XData ProductionDefinition
   <Item Name="InteropOperation" Category="" ClassName="HS.FHIRServer.Interop.DummyOperation" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
   </Item>
   <Item Name="InteropService" Category="" ClassName="HS.FHIRServer.Interop.Service" PoolSize="0" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
-    <Setting Target="Host" Name="TargetConfigName">HS.FHIRServer.Interop.HTTPOperation</Setting>
+    <Setting Target="Host" Name="TargetConfigName">FHIRServer Operation OAuth</Setting>
     <Setting Target="Host" Name="TraceOperations">*FULL*</Setting>
   </Item>
 </Production>

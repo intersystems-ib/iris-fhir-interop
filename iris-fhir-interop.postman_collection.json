@@ -7,46 +7,311 @@
 	},
 	"item": [
 		{
-			"name": "metadata",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:52773/myendpoint/r4/metadata",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "52773",
-					"path": [
-						"myendpoint",
-						"r4",
-						"metadata"
-					]
+			"name": "FHIR Repo",
+			"item": [
+				{
+					"name": "metadata",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{https-fhirendpoint}}/metadata",
+							"host": [
+								"{{https-fhirendpoint}}"
+							],
+							"path": [
+								"metadata"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patient (Basic)",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "SYS",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "superuser",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{https-fhirendpoint}}/Patient",
+							"host": [
+								"{{https-fhirendpoint}}"
+							],
+							"path": [
+								"Patient"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patient (OAuth)",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "scope",
+									"value": "user/Observation.read user/Patient.read",
+									"type": "string"
+								},
+								{
+									"key": "clientSecret",
+									"value": "{{oauth-clientsecret}}",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "{{oauth-clientid}}",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "{{authserver-token-url}}?aud={{https-fhirendpoint}}",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "string"
+								},
+								{
+									"key": "tokenName",
+									"value": "client-token",
+									"type": "string"
+								},
+								{
+									"key": "authUrl",
+									"value": "https://get.smartpehr.com/hsucr/oauth2",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "demo",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "sfarrell",
+									"type": "string"
+								},
+								{
+									"key": "useBrowser",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "client_authentication",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{https-fhirendpoint}}/Patient",
+							"host": [
+								"{{https-fhirendpoint}}"
+							],
+							"path": [
+								"Patient"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "Patient",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:52773/myendpoint/r4/Patient",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "52773",
-					"path": [
-						"myendpoint",
-						"r4",
-						"Patient"
-					]
+			"name": "FHIR Interop",
+			"item": [
+				{
+					"name": "metadata",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{https-interop-endpoint}}/metadata",
+							"host": [
+								"{{https-interop-endpoint}}"
+							],
+							"path": [
+								"metadata"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patient",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{https-interop-endpoint}}/Patient",
+							"host": [
+								"{{https-interop-endpoint}}"
+							],
+							"path": [
+								"Patient"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patient (OAuth)",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "scope",
+									"value": "user/Observation.read user/Patient.read",
+									"type": "string"
+								},
+								{
+									"key": "clientSecret",
+									"value": "{{oauth-clientsecret}}",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "{{oauth-clientid}}",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "{{authserver-token-url}}?aud={{https-fhirendpoint}}",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "string"
+								},
+								{
+									"key": "tokenName",
+									"value": "client-token",
+									"type": "string"
+								},
+								{
+									"key": "authUrl",
+									"value": "https://get.smartpehr.com/hsucr/oauth2",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "demo",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "sfarrell",
+									"type": "string"
+								},
+								{
+									"key": "useBrowser",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "client_authentication",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{https-interop-endpoint}}/Patient",
+							"host": [
+								"{{https-interop-endpoint}}"
+							],
+							"path": [
+								"Patient"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "https-fhirendpoint",
+			"value": "https://webserver/iris/csp/healthshare/fhirrepo/fhir/r4",
+			"type": "string"
+		},
+		{
+			"key": "authserver-token-url",
+			"value": "https://webserver/iris/oauth2/token",
+			"type": "string"
+		},
+		{
+			"key": "oauth-clientid",
+			"value": "x__Nn8TzR2yuGO96qdyWatwl-iZG7zScZO7ER7NA3Uk",
+			"type": "string"
+		},
+		{
+			"key": "oauth-clientsecret",
+			"value": "gsEnd88La5GqepYklgDG0hyhgZzNMF_mNezRMuhkZeDseKNI-FzsGU0g81JRZjZT5wSv1HF_KQW75A5TAo0A-A",
+			"type": "string"
+		},
+		{
+			"key": "https-interop-endpoint",
+			"value": "https://webserver/iris/myendpoint/r4",
+			"type": "string"
 		}
 	]
 }

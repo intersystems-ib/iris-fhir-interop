@@ -2,6 +2,7 @@
 obj
 bin
 *.bak
+webserver/webgateway/CSP.log
 
 # iris license
 iris.key

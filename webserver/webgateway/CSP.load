@@ -1,0 +1,1 @@
+LoadModule csp_module_sa "/opt/webgateway/bin/CSPa24.so"
