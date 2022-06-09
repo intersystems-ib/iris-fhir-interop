@@ -96,7 +96,6 @@ do ##class(interop.util.Auth).CreateOAuth2IssuerServiceRegistry()
 Health > FHIRREPO > FHIR Configuration > Server Configuration > Edit FHIR Server endpoint:
 * OAuth Client Name: `fhirserver-resserver`
 * Smart on FHIR Capabilites: `client-confidential-symmetric,client-confidential-asymmetric`
-* Experimental SMART on FHIR 2.0.0 scopes: `enabled`
 
 ### Load simple FHIR data
 Load some simple sample FHIR data into repo.
