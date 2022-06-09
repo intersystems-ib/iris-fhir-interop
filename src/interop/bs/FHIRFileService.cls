@@ -38,8 +38,11 @@ Method OnProcessInput(pInput As %Stream.GlobalCharacter, pOutput As %RegisteredO
         // send message to targets
         for i=1:1:$l(..TargetConfigNames, ",") { 
 			set tTarget=$zstrip($p(..TargetConfigNames,",",i),"<>W")
-			$$$ThrowOnError(..SendRequestAsync(tTarget, interopRequest))
+			$$$ThrowOnError(..SendRequestSync(tTarget, interopRequest, .response))
         }
+
+        // clear HS.SDA3.QuickStream (^CacheTemp.HS.Stream)
+        do quickStream.Clear(1)
 
     } catch ex {
         set ret = ex.AsStatus()
