@@ -142,15 +142,100 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Create ServiceRequest",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "SYS",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "superuser",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/fhir+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"resourceType\": \"ServiceRequest\",\n  \"id\": \"education\",\n  \"text\": {\n    \"status\": \"generated\",\n    \"div\": \"<div xmlns=\\\"http://www.w3.org/1999/xhtml\\\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: education</p><p><b>status</b>: completed</p><p><b>intent</b>: order</p><p><b>category</b>: Education <span>(Details : {SNOMED CT code '311401005' = 'Patient education', given as 'Patient education (procedure)'})</span></p><p><b>code</b>: Health education - breast examination <span>(Details : {SNOMED CT code '48023004' = 'Breast self-examination technique education', given as 'Breast self-examination technique education (procedure)'})</span></p><p><b>subject</b>: Jane Doe</p><p><b>occurrence</b>: 16/08/2014</p><p><b>authoredOn</b>: 16/08/2016</p><p><b>requester</b>: Angela Care, MD</p><p><b>performer</b>: Pamela Educator, RN</p><p><b>reasonCode</b>: early detection of breast mass <span>(Details )</span></p></div>\"\n  },\n  \"status\": \"completed\",\n  \"intent\": \"order\",\n  \"category\": [\n    {\n      \"coding\": [\n        {\n          \"system\": \"http://snomed.info/sct\",\n          \"code\": \"311401005\",\n          \"display\": \"Patient education (procedure)\"\n        }\n      ],\n      \"text\": \"Education\"\n    }\n  ],\n  \"code\": {\n    \"coding\": [\n      {\n        \"system\": \"http://snomed.info/sct\",\n        \"code\": \"48023004\",\n        \"display\": \"Breast self-examination technique education (procedure)\"\n      }\n    ],\n    \"text\": \"Health education - breast examination\"\n  },\n  \"subject\": {\n    \"display\": \"Jane Doe\"\n  },\n  \"occurrenceDateTime\": \"2014-08-16\",\n  \"authoredOn\": \"2016-08-16\",\n  \"requester\": {\n    \"display\": \"Angela Care, MD\"\n  },\n  \"performer\": [\n    {\n      \"display\": \"Pamela Educator, RN\"\n    }\n  ],\n  \"reasonCode\": [\n    {\n      \"text\": \"early detection of breast mass\"\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{https-fhirendpoint}}/ServiceRequest",
+							"host": [
+								"{{https-fhirendpoint}}"
+							],
+							"path": [
+								"ServiceRequest"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ServiceRequest (Basic)",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "SYS",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "superuser",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{https-fhirendpoint}}/ServiceRequest",
+							"host": [
+								"{{https-fhirendpoint}}"
+							],
+							"path": [
+								"ServiceRequest"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
 		{
-			"name": "FHIR Interop",
+			"name": "FHIR Interop (OAuth)",
 			"item": [
 				{
 					"name": "metadata",
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -166,7 +251,7 @@
 					"response": []
 				},
 				{
-					"name": "Patient",
+					"name": "Patient (Fail)",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -183,7 +268,116 @@
 					"response": []
 				},
 				{
-					"name": "Patient (OAuth)",
+					"name": "Create Patient (OAuth)",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true,
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "scope",
+									"value": "user/Observation.read user/Patient.read user/Patient.write",
+									"type": "string"
+								},
+								{
+									"key": "clientSecret",
+									"value": "{{oauth-clientsecret}}",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "{{oauth-clientid}}",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "{{authserver-token-url}}?aud={{https-fhirendpoint}}",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "string"
+								},
+								{
+									"key": "tokenName",
+									"value": "client-token",
+									"type": "string"
+								},
+								{
+									"key": "authUrl",
+									"value": "https://get.smartpehr.com/hsucr/oauth2",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "demo",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "sfarrell",
+									"type": "string"
+								},
+								{
+									"key": "useBrowser",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "client_authentication",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/fhir+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"resourceType\": \"Patient\",\n    \"id\": \"344638ea-2563-4243-bb1f-7982ea2acb16\",\n    \"text\": {\n        \"status\": \"generated\",\n        \"div\": \"<div xmlns=\\\"http://www.w3.org/1999/xhtml\\\">Generated by <a href=\\\"https://github.com/synthetichealth/synthea\\\">Synthea</a>.Version identifier: v2.5.0-204-g604ddbe3\\n .   Person seed: 2946358990747766240  Population seed: 12345</div>\"\n    },\n    \"extension\": [\n        {\n            \"url\": \"http://hl7.org/fhir/us/core/StructureDefinition/us-core-race\",\n            \"extension\": [\n                {\n                    \"url\": \"ombCategory\",\n                    \"valueCoding\": {\n                        \"system\": \"urn:oid:2.16.840.1.113883.6.238\",\n                        \"code\": \"2106-3\",\n                        \"display\": \"White\"\n                    }\n                },\n                {\n                    \"url\": \"text\",\n                    \"valueString\": \"White\"\n                }\n            ]\n        },\n        {\n            \"url\": \"http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity\",\n            \"extension\": [\n                {\n                    \"url\": \"ombCategory\",\n                    \"valueCoding\": {\n                        \"system\": \"urn:oid:2.16.840.1.113883.6.238\",\n                        \"code\": \"2186-5\",\n                        \"display\": \"Not Hispanic or Latino\"\n                    }\n                },\n                {\n                    \"url\": \"text\",\n                    \"valueString\": \"Not Hispanic or Latino\"\n                }\n            ]\n        },\n        {\n            \"url\": \"http://hl7.org/fhir/StructureDefinition/patient-mothersMaidenName\",\n            \"valueString\": \"Jeanne553 Schmeler639\"\n        },\n        {\n            \"url\": \"http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex\",\n            \"valueCode\": \"F\"\n        },\n        {\n            \"url\": \"http://hl7.org/fhir/StructureDefinition/patient-birthPlace\",\n            \"valueAddress\": {\n                \"city\": \"Wilbraham\",\n                \"state\": \"Massachusetts\",\n                \"country\": \"US\"\n            }\n        },\n        {\n            \"url\": \"http://synthetichealth.github.io/synthea/disability-adjusted-life-years\",\n            \"valueDecimal\": 3.0067679299184165\n        },\n        {\n            \"url\": \"http://synthetichealth.github.io/synthea/quality-adjusted-life-years\",\n            \"valueDecimal\": 69.99323207008159\n        }\n    ],\n    \"identifier\": [\n        {\n            \"system\": \"https://github.com/synthetichealth/synthea\",\n            \"value\": \"344638ea-2563-4243-bb1f-7982ea2acb16\"\n        },\n        {\n            \"type\": {\n                \"coding\": [\n                    {\n                        \"system\": \"http://terminology.hl7.org/CodeSystem/v2-0203\",\n                        \"code\": \"MR\",\n                        \"display\": \"Medical Record Number\"\n                    }\n                ],\n                \"text\": \"Medical Record Number\"\n            },\n            \"system\": \"http://hospital.smarthealthit.org\",\n            \"value\": \"344638ea-2563-4243-bb1f-7982ea2acb16\"\n        },\n        {\n            \"type\": {\n                \"coding\": [\n                    {\n                        \"system\": \"http://terminology.hl7.org/CodeSystem/v2-0203\",\n                        \"code\": \"SS\",\n                        \"display\": \"Social Security Number\"\n                    }\n                ],\n                \"text\": \"Social Security Number\"\n            },\n            \"system\": \"http://hl7.org/fhir/sid/us-ssn\",\n            \"value\": \"999-21-9094\"\n        },\n        {\n            \"type\": {\n                \"coding\": [\n                    {\n                        \"system\": \"http://terminology.hl7.org/CodeSystem/v2-0203\",\n                        \"code\": \"DL\",\n                        \"display\": \"Driver's License\"\n                    }\n                ],\n                \"text\": \"Driver's License\"\n            },\n            \"system\": \"urn:oid:2.16.840.1.113883.4.3.25\",\n            \"value\": \"S99926997\"\n        },\n        {\n            \"type\": {\n                \"coding\": [\n                    {\n                        \"system\": \"http://terminology.hl7.org/CodeSystem/v2-0203\",\n                        \"code\": \"PPN\",\n                        \"display\": \"Passport Number\"\n                    }\n                ],\n                \"text\": \"Passport Number\"\n            },\n            \"system\": \"http://standardhealthrecord.org/fhir/StructureDefinition/passportNumber\",\n            \"value\": \"X21076848X\"\n        }\n    ],\n    \"name\": [\n        {\n            \"use\": \"official\",\n            \"family\": \"Lemke654\",\n            \"given\": [\n                \"Alfreda3\"\n            ],\n            \"prefix\": [\n                \"Mrs.\"\n            ]\n        },\n        {\n            \"use\": \"maiden\",\n            \"family\": \"Tromp100\",\n            \"given\": [\n                \"Alfreda3\"\n            ],\n            \"prefix\": [\n                \"Mrs.\"\n            ]\n        }\n    ],\n    \"telecom\": [\n        {\n            \"system\": \"phone\",\n            \"value\": \"555-227-9893\",\n            \"use\": \"home\"\n        }\n    ],\n    \"gender\": \"female\",\n    \"birthDate\": \"1946-03-23\",\n    \"address\": [\n        {\n            \"extension\": [\n                {\n                    \"url\": \"http://hl7.org/fhir/StructureDefinition/geolocation\",\n                    \"extension\": [\n                        {\n                            \"url\": \"latitude\",\n                            \"valueDecimal\": 42.37753568543367\n                        },\n                        {\n                            \"url\": \"longitude\",\n                            \"valueDecimal\": -71.03649919791356\n                        }\n                    ]\n                }\n            ],\n            \"line\": [\n                \"382 Rempel Frontage road\"\n            ],\n            \"city\": \"Boston\",\n            \"state\": \"Massachusetts\",\n            \"postalCode\": \"02125\",\n            \"country\": \"US\"\n        }\n    ],\n    \"maritalStatus\": {\n        \"coding\": [\n            {\n                \"system\": \"http://terminology.hl7.org/CodeSystem/v3-MaritalStatus\",\n                \"code\": \"M\",\n                \"display\": \"M\"\n            }\n        ],\n        \"text\": \"M\"\n    },\n    \"multipleBirthBoolean\": false,\n    \"communication\": [\n        {\n            \"language\": {\n                \"coding\": [\n                    {\n                        \"system\": \"urn:ietf:bcp:47\",\n                        \"code\": \"en-US\",\n                        \"display\": \"English\"\n                    }\n                ],\n                \"text\": \"English\"\n            }\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{https-interop-endpoint}}/Patient?_format=application/json",
+							"host": [
+								"{{https-interop-endpoint}}"
+							],
+							"path": [
+								"Patient"
+							],
+							"query": [
+								{
+									"key": "_format",
+									"value": "application/json"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patient (OAuth) Copy",
 					"request": {
 						"auth": {
 							"type": "oauth2",
@@ -265,6 +459,64 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "FHIR Interop (Simple Service)",
+			"item": [
+				{
+					"name": "External Simple Service (Direct)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:52773/csp/external/ServiceRequest",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "52773",
+							"path": [
+								"csp",
+								"external",
+								"ServiceRequest"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "External Simple Service (Interop)",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "SYS",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "superuser",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{https-interop-endpoint}}/ServiceRequest",
+							"host": [
+								"{{https-interop-endpoint}}"
+							],
+							"path": [
+								"ServiceRequest"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"event": [
@@ -300,12 +552,12 @@
 		},
 		{
 			"key": "oauth-clientid",
-			"value": "x__Nn8TzR2yuGO96qdyWatwl-iZG7zScZO7ER7NA3Uk",
+			"value": "YqsSfgRqJdu61eQ-eRUmjPYhwxjVXNjarZUm51Elizk",
 			"type": "string"
 		},
 		{
 			"key": "oauth-clientsecret",
-			"value": "gsEnd88La5GqepYklgDG0hyhgZzNMF_mNezRMuhkZeDseKNI-FzsGU0g81JRZjZT5wSv1HF_KQW75A5TAo0A-A",
+			"value": "ju_y2ZoktCcQD0wLFMnrqIdKNrlNyawiHhJICJtqfSFfraDaWaZe4LIStMiGxKh71j0X55jGZDSMnwJ6T4O33g",
 			"type": "string"
 		},
 		{
