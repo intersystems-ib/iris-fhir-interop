@@ -191,6 +191,6 @@ In `FHIRINTEROP` namespace, go to Health > Service Registry and create a new ser
 * URL: `/csp/external/ServiceRequest`
 
 ### Change InteropService target
-Change `InteropService` target so it will send requests to `FHIRServer Operation Simple Service`.
+Change `InteropService` target so it will send requests to `interop.bp.SimpleServiceFHIRHandlerContext`.
 
 Now, test your service using [iris-fhir-interop.postman_collection.json](./iris-fhir-interop.postman_collection.json) Postman collection *FHIR Interop (Simple Service)*
