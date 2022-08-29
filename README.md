@@ -28,7 +28,10 @@ https://webserver/iris/csp/sys/UtilHome.csp
 
 ## Create Interoperability namespace (FHIRINTEROP)
 
+Open a [WebTerminal](localhost:52773/terminal/) session.
+
 ### Create `FHIRINTEROP` foundation namespace for interoperability:
+
 ```
 zn "HSLIB"
 do ##class(HS.HC.Util.Installer).InstallFoundation("FHIRINTEROP")
@@ -108,6 +111,8 @@ set sc = ##class(HS.FHIRServer.Tools.DataLoader).SubmitResourceFiles("/app/insta
 # Scenario: FHIR client
 Scenario where you need to build or manipulate some FHIR request and send it to an external FHIR server.
 
+<img src="./img/scenario-fhirclient-file-simple.png" width="600px"/>
+
 ## Config URL for external FHIR server
 
 ### Create Basic Credentials
@@ -143,14 +148,18 @@ Run some tests:
 * Start the production
 * Copy `data/patient.json` into `data/fhir-input` to process a sample file in your production.
 
-# Scenario: FHIR server
+# Scenario: FHIR server pass-through
 
 Scenario in which you need to receive FHIR requests and send them to an external server.
+
+<img src="./img/scenario-fhirserver-passthrough.png" width="600px"/>
 
 For example, in case you need to forward a FHIR request to an external server you can use simple FHIR Interoperability Adapter in InterSystems IRIS or HealthShare Health Connect.
 You can find more information in [FHIR Interoperability Adapter](https://docs.intersystems.com/healthconnect20221/csp/docbook/DocBook.UI.Page.cls?KEY=HXFHIR_fhir_adapter).
 
-## Install adapter
+## OAuth
+
+### Install adapter
 You need to install the FHIR interoperability adapter before using it in a namespace.
 During the adapter installation it will create:
 * A web application for your FHIR server endpoint.
@@ -165,7 +174,23 @@ set status = ##class(HS.FHIRServer.Installer).InteropAdapterConfig("/myendpoint/
 
 Update your production as needed
 
-## Config InteropService
+### Config InteropService
 Change `InteropService` Target Config Name so it will send messages to already configured `HS.FHIRServer.Interop.HTTPOperation` which sends messages to external FHIR server.
 
-Test your service using [iris-fhir-interop.postman_collection.json](./iris-fhir-interop.postman_collection.json) Postman collection
+Test your service using [iris-fhir-interop.postman_collection.json](./iris-fhir-interop.postman_collection.json) Postman collection *FHIR Interop (OAuth)*
+
+
+## Simple REST Service
+
+### Create HTTP service (OAuth)
+In `FHIRINTEROP` namespace, go to Health > Service Registry and create a new service:
+* Name: `external-simple-service`
+* Service Type: `HTTP`
+* Host: `localhost`
+* Port: 52773
+* URL: `/csp/external/ServiceRequest`
+
+### Change InteropService target
+Change `InteropService` target so it will send requests to `FHIRServer Operation Simple Service`.
+
+Now, test your service using [iris-fhir-interop.postman_collection.json](./iris-fhir-interop.postman_collection.json) Postman collection *FHIR Interop (Simple Service)*

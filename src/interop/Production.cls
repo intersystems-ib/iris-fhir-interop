@@ -19,6 +19,10 @@ XData ProductionDefinition
     <Setting Target="Host" Name="ServiceName">external-fhirserver-oauth</Setting>
     <Setting Target="Host" Name="TraceOperations">*FULL*</Setting>
   </Item>
+  <Item Name="FHIRServer Operation Simple Service" Category="" ClassName="HS.FHIRServer.Interop.HTTPOperation" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
+    <Setting Target="Host" Name="ServiceName">external-simple-service</Setting>
+    <Setting Target="Host" Name="TraceOperations">*FULL*</Setting>
+  </Item>
   <Item Name="HS.Util.Trace.Operations" Category="" ClassName="HS.Util.Trace.Operations" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
   </Item>
   <Item Name="interop.bp.FileToFHIRServer" Category="" ClassName="interop.bp.FileToFHIRServer" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">

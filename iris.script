@@ -3,7 +3,14 @@
     do ##class(Security.Users).UnExpireUserPasswords("*")
     do $system.License.Upgrade()
 
+    // install webterminal
+    zpm "install webterminal"
+
     // ssl: load default SSL config
     write ##class(Security.SSLConfigs).Import("/opt/irisapp/install/ssl.xml")
+
+    // import webapp
+    zn "%SYS"
+    write ##class(Security.Applications).Import("/opt/irisapp/install/webapp-external.xml")
 
     halt

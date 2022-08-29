@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApplicationsExport>
+  <Applications>
+    <AutheEnabled>96</AutheEnabled>
+    <AutoCompile>true</AutoCompile>
+    <CookiePath>/csp/external/</CookiePath>
+    <CSPZENEnabled>true</CSPZENEnabled>
+    <CSRFToken>false</CSRFToken>
+    <DeepSeeEnabled>false</DeepSeeEnabled>
+    <DispatchClass>interop.external.SimpleService</DispatchClass>
+    <Enabled>true</Enabled>
+    <HyperEvent>0</HyperEvent>
+    <iKnowEnabled>false</iKnowEnabled>
+    <InbndWebServicesEnabled>true</InbndWebServicesEnabled>
+    <IsNameSpaceDefault>false</IsNameSpaceDefault>
+    <LockCSPName>true</LockCSPName>
+    <MatchRoles>
+      <MatchRolesItem>:%All</MatchRolesItem>
+    </MatchRoles>
+    <Name>/csp/external</Name>
+    <NameSpace>FHIRINTEROP</NameSpace>
+    <Recurse>true</Recurse>
+    <RedirectEmptyPath>false</RedirectEmptyPath>
+    <ServeFiles>1</ServeFiles>
+    <ServeFilesTimeout>3600</ServeFilesTimeout>
+    <Timeout>900</Timeout>
+    <TwoFactorEnabled>false</TwoFactorEnabled>
+    <Type>2</Type>
+    <UseCookies>2</UseCookies>
+    <SessionScope>2</SessionScope>
+    <UserCookieScope>2</UserCookieScope>
+    <Version>1</Version>
+  </Applications>
+</ApplicationsExport>
