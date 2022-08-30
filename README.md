@@ -152,12 +152,14 @@ Run some tests:
 
 Scenario in which you need to receive FHIR requests and send them to an external server.
 
-<img src="./img/scenario-fhirserver-passthrough.png" width="600px"/>
-
 For example, in case you need to forward a FHIR request to an external server you can use simple FHIR Interoperability Adapter in InterSystems IRIS or HealthShare Health Connect.
 You can find more information in [FHIR Interoperability Adapter](https://docs.intersystems.com/healthconnect20221/csp/docbook/DocBook.UI.Page.cls?KEY=HXFHIR_fhir_adapter).
 
 ## OAuth
+
+Let's say that you need to forward FHIR requests to a FHIR server, including OAuth token:
+
+<img src="./img/scenario-fhirserver-passthrough.png" width="600px"/>
 
 ### Install adapter
 You need to install the FHIR interoperability adapter before using it in a namespace.
@@ -181,6 +183,10 @@ Test your service using [iris-fhir-interop.postman_collection.json](./iris-fhir-
 
 
 ## Simple REST Service
+
+As a variation from the last scenario, let's say that you need to send FHIR requests to a FHIR service, but you need to make handling on the requests or response: 
+
+<img src="./img/scenario-fhirservice-handler.png" width="600px"/>
 
 ### Create HTTP service (OAuth)
 In `FHIRINTEROP` namespace, go to Health > Service Registry and create a new service:
