@@ -176,7 +176,7 @@ set status = ##class(HS.FHIRServer.Installer).InteropAdapterConfig("/myendpoint/
 
 Update your production as needed
 
-### Config InteropService
+### Config InteropService
 Change `InteropService` Target Config Name so it will send messages to already configured `HS.FHIRServer.Interop.HTTPOperation` which sends messages to external FHIR server.
 
 Test your service using [iris-fhir-interop.postman_collection.json](./iris-fhir-interop.postman_collection.json) Postman collection *FHIR Interop (OAuth)*
