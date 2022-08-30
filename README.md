@@ -1,4 +1,4 @@
-Example of using InterSystems IRIS or HealthShare Health Connect interoperability features for FHIR (no FHIR repository capabilities used in this case).
+Example of using InterSystems IRIS or HealthShare Health Connect interoperability features for FHIR. Scenarios where forwarding requests and handling responses are required.
 
 # Setup
 Build image
