@@ -28,7 +28,7 @@ https://webserver/iris/csp/sys/UtilHome.csp
 
 ## Create Interoperability namespace (FHIRINTEROP)
 
-Open a [WebTerminal](localhost:52773/terminal/) session.
+Open a [WebTerminal](http://localhost:52773/iris/terminal/) session.
 
 ### Create `FHIRINTEROP` foundation namespace for interoperability:
 
