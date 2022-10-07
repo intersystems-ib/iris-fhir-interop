@@ -377,7 +377,7 @@
 					"response": []
 				},
 				{
-					"name": "Patient (OAuth) Copy",
+					"name": "Patient (OAuth)",
 					"request": {
 						"auth": {
 							"type": "oauth2",
@@ -469,13 +469,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:52773/csp/external/ServiceRequest",
+							"raw": "http://webserver/iris/csp/external/ServiceRequest",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"webserver"
 							],
-							"port": "52773",
 							"path": [
+								"iris",
 								"csp",
 								"external",
 								"ServiceRequest"
@@ -552,12 +552,12 @@
 		},
 		{
 			"key": "oauth-clientid",
-			"value": "YqsSfgRqJdu61eQ-eRUmjPYhwxjVXNjarZUm51Elizk",
+			"value": "T-94f-L1BBf5rXdUWQO309-EV1av1yc7dwUklMdMXk0",
 			"type": "string"
 		},
 		{
 			"key": "oauth-clientsecret",
-			"value": "ju_y2ZoktCcQD0wLFMnrqIdKNrlNyawiHhJICJtqfSFfraDaWaZe4LIStMiGxKh71j0X55jGZDSMnwJ6T4O33g",
+			"value": "taxZQ5KppednvM7Tqxy7ob7NUseTsxwJqAXdAT7LWcrkxe98U6CZNiVqyhY84Ira__3ZfcfA6cP2wkiFEU2atg",
 			"type": "string"
 		},
 		{
