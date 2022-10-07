@@ -30,7 +30,7 @@ XData ProductionDefinition
   <Item Name="InteropOperation" Category="" ClassName="HS.FHIRServer.Interop.DummyOperation" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
   </Item>
   <Item Name="InteropService" Category="" ClassName="HS.FHIRServer.Interop.Service" PoolSize="0" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
-    <Setting Target="Host" Name="TargetConfigName">interop.bp.SimpleServiceFHIRHandler</Setting>
+    <Setting Target="Host" Name="TargetConfigName">FHIRServer Operation OAuth</Setting>
     <Setting Target="Host" Name="TraceOperations">*FULL*</Setting>
   </Item>
   <Item Name="interop.bp.SimpleServiceFHIRHandler" Category="" ClassName="interop.bp.SimpleServiceFHIRHandler" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
