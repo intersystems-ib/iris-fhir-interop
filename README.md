@@ -1,6 +1,15 @@
 Example of using InterSystems IRIS or HealthShare Health Connect interoperability features for FHIR. Scenarios where forwarding requests and handling responses are required.
 
 # Setup
+
+Main setup components are:
+* **FHIRREPO** - namespace with a FHIR repository (OAuth enabled) that will be used to simulate an external FHIR repo.
+* **Apache + Webgateway** - webserver + webgateway to enable local https using self-signed certificates.
+* **FHIINTEROP** - namespace that will run interoperability productions using FHIR Adapter.
+
+
+<img src="img/setup.png" width="400px">
+
 Build image
 ```
 docker-compose build
@@ -26,11 +35,11 @@ You can find your hosts file in:
 Access IRIS instance using `superuser` / `SYS`:
 https://webserver/iris/csp/sys/UtilHome.csp
 
-## Create Interoperability namespace (FHIRINTEROP)
+## 1-Create Interoperability namespace
 
 Open a [WebTerminal](http://localhost:52773/iris/terminal/) session.
 
-### Create `FHIRINTEROP` foundation namespace for interoperability:
+### Create FHIRINTEROP namespace for interoperability:
 
 ```
 zn "HSLIB"
@@ -43,10 +52,10 @@ zn "FHIRINTEROP"
 do $SYSTEM.OBJ.LoadDir("/app/src/", "ck", .errorlog, 1)
 ```
 
-## Create FHIR Repository (FHIRREPO)
+## 2-Create FHIR Repository
 Create a FHIR server in InterSystems IRIS. You will be using this as an external FHIR server.
 
-### Create namespace
+### Create FHIRREPO namespace for fhir repository
 ```
 zn "HSLIB"
 do ##class(HS.HC.Util.Installer).InstallFoundation("FHIRREPO")
