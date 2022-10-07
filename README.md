@@ -186,7 +186,7 @@ set status = ##class(HS.FHIRServer.Installer).InteropAdapterConfig("/myendpoint/
 Update your production as needed
 
 ### Config InteropService
-Change `InteropService` Target Config Name so it will send messages to already configured `HS.FHIRServer.Interop.HTTPOperation` which sends messages to external FHIR server.
+Change `InteropService` Target Config Name so it will send messages to `FHIRServer Operation OAuth` which sends messages to external FHIR server.
 
 Test your service using [iris-fhir-interop.postman_collection.json](./iris-fhir-interop.postman_collection.json) Postman collection *FHIR Interop (OAuth)*
 
@@ -206,6 +206,6 @@ In `FHIRINTEROP` namespace, go to Health > Service Registry and create a new ser
 * URL: `/csp/external/ServiceRequest`
 
 ### Change InteropService target
-Change `InteropService` target so it will send requests to `interop.bp.SimpleServiceFHIRHandlerContext`.
+Change `InteropService` target so it will send requests to `interop.bp.SimpleServiceFHIRHandler`.
 
 Now, test your service using [iris-fhir-interop.postman_collection.json](./iris-fhir-interop.postman_collection.json) Postman collection *FHIR Interop (Simple Service)*
