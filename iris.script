@@ -1,7 +1,9 @@
     // unexpire passwords for dev mode
     zn "%SYS"
     do ##class(Security.Users).UnExpireUserPasswords("*")
-    do $system.License.Upgrade()
+   
+   // install zpm
+    set r=##class(%Net.HttpRequest).%New(),r.Server="pm.community.intersystems.com",r.SSLConfiguration="ISC.FeatureTracker.SSL.Config" d r.Get("/packages/zpm/latest/installer"),$system.OBJ.LoadStream(r.HttpResponse.Data,"c")
 
     // install webterminal
     zpm "install webterminal"
