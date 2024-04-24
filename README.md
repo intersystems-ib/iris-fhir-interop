@@ -58,7 +58,7 @@ Create a FHIR server in InterSystems IRIS. You will be using this as an external
 ### Create FHIRREPO namespace for fhir repository
 ```
 zn "HSLIB"
- do ##class(HS.Util.Installer.Foundation).Install("FHIRREPO")
+do ##class(HS.Util.Installer.Foundation).Install("FHIRREPO")
 ```
 
 ### Create FHIR endpoint
