@@ -1,4 +1,4 @@
-FROM containers.intersystems.com/intersystems/webgateway:2024.1
+FROM containers.intersystems.com/intersystems/webgateway:latest-em
 
 # apache: enable ssl
 RUN a2enmod ssl
